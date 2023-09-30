@@ -1,1 +1,61 @@
 /* You can add global styles to this file, and also import other style files */
+/* Application-wide Styles */
+html {
+    height: 100%;
+  }
+  body {
+    height: inherit;
+    margin: 0;
+  }
+  body,
+  input[type="text"],
+  button {
+    color: #333;
+    font-family: Cambria, Georgia, serif;
+  }
+  h1 {
+    color: #369;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 250%;
+  }
+  h2,
+  h3 {
+    color: #808080;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  a {
+    color: rgb(110, 110, 255);
+  }
+  button {
+    background-color: #eee;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: black;
+    font-size: 1.2rem;
+    padding: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+  }
+  button:hover {
+    background-color: black;
+    color: white;
+  }
+  button:disabled {
+    background-color: #eee;
+    color: #aaa;
+    cursor: auto;
+  }
+  
+  app-root {
+    height: inherit;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  
+  /* everywhere else */
+  * {
+    font-family: Arial, Helvetica, sans-serif;
+  }

@@ -5,14 +5,11 @@ label {
   }
   input {
     font-size: 1em;
-    padding: .5rem;
+    padding: .1rem;
+    margin-left: 20px;
   }
   button {
     margin-top: 20px;
-    background-color: #eee;
-    padding: 1rem;
-    border-radius: 4px;
-    font-size: 1rem;
   }
   button:hover {
     background-color: #cfd8dc;
@@ -22,3 +19,12 @@ label {
     color: #ccc;
     cursor: auto;
   }
+
+  body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+.new-container {
+  margin-top: 5%;
+}

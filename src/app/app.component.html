@@ -1,7 +1,19 @@
-<h1>{{title}}</h1>
-<nav>
-    <a routerLink="/heroes">Heroes</a>
-    <a routerLink="/dashboard">Hero dashboard</a>
-</nav>
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-dark">
+    <h1 class="mx-auto">
+        <a style="color: white; font-size: 30px;" class="navbar-brand" routerLink="/heroes">{{ title }}</a>
+      </h1>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a style="color: white;" class="nav-link" routerLink="/heroes">Home</a>
+        </li>
+        <li class="nav-item">
+          <a style="color: white;" class="nav-link" routerLink="/dashboard">Dashboard</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 <router-outlet></router-outlet>
-<app-messages></app-messages>

@@ -1,19 +1,56 @@
-<h2>Current heroes</h2>
-<ul class="heroes">
-    <li *ngFor="let hero of heroes">
-      <a routerLink="/heroDetail/{{hero.id}}">
-        <span class="badge">{{hero.id}}</span> {{hero.name}}
-      </a>
-      <button type="button" class="delete" title="delete hero"
-        (click)="delete(hero)">X</button>
-    </li>
-  </ul>
-<div>
-    <label for="new-hero">Hero name: </label>
-    <input id="new-hero" #heroName />
-  
-    <!-- (click) passes input value to add() and then clears the input -->
-    <button type="button" class="add-button" (click)="add(heroName.value); heroName.value=''">
-      Add hero
-    </button>
+<section class="vh-100" style="background-color: #eee; margin-top: 1%">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-lg-9 col-xl-7">
+        <div class="card rounded-3">
+          <div class="card-body p-4">
+
+            <h4 class="text-center my-3 pb-3">My Heroes List</h4>
+
+            <form class="row row-cols-lg-auto g-3 justify-content-center align-items-center mb-4 pb-2">
+              <div class="col-12">
+                <div class="form-outline">
+                  <label class="form-label" for="new-hero">Enter hero name</label>
+                  <input id="new-hero" #heroName  type="text" class="form-control" />
+                  <div class="row-cols-12" *ngIf="showError" style="color: red;">Please enter a hero name.</div>
+                </div>
+              </div>
+
+              <div class="row-cols-12" style="margin-top: 50px;">
+                <button type="submit" (click)="add(heroName.value); heroName.value = ''" class="btn btn-primary">Save</button>
+              </div>
+
+              <div class="row-cols-12" style="margin-top: 50px;">
+                <button type="submit" class="btn btn-warning" (click)="triggerGetHeroes()">
+                  {{getHeroesText}}
+                </button>
+              </div>
+            </form>
+            
+              <table class="table mb-4" *ngIf="isGetHeroes">
+                <thead>
+                  <tr>
+                    <th scope="col">Hero ID</th>
+                    <th scope="col">Hero Name</th>
+                    <th scope="col">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let hero of heroes">
+                    <th scope="row">{{hero.id}}</th>
+                    <td>{{hero.name}}</td>
+                    <td>
+                      <button type="submit" class="btn btn-danger" (click)="delete(hero)">Delete</button>
+                      <button type="submit" class="btn btn-success ms-1"><a style="text-decoration: none; color: white" routerLink="/heroDetail/{{ hero.id }}">
+                        View Hero</a></button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+</section> 

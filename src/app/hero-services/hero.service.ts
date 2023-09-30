@@ -36,7 +36,7 @@ export class HeroService {
 
   /** PUT: update the hero on the server */
   updateHero(hero: Hero): Observable<any> {
-    const url = this.heroesUrl + "/heroes"
+    const url = this.heroesUrl + "/heroes" + `/${hero.id}`;
     return this.client.put(url, hero, this.httpOptions).pipe(
       tap(_ => this.log(`updated hero id=${hero.id}`)),
       catchError(this.handleError<any>('updateHero'))
@@ -67,7 +67,8 @@ export class HeroService {
       return of([]);
     }
     const url = this.heroesUrl + "/heroes" 
-    return this.client.get<Hero[]>(`${url}/?name=${term}`).pipe(
+    const params = {name : term}; 
+    return this.client.get<Hero[]>(url,{params}).pipe(
       tap(x => x.length ?
         this.log(`found heroes matching "${term}"`) :
         this.log(`no heroes matching "${term}"`)),

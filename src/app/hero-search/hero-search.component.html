@@ -1,14 +1,27 @@
-<div class="input-group" style="margin: 10px">
-  <div class="form-outline">
-    <input id="search-focus" type="search" [placeholder]="'Search for heroes'" 
-    #searchBox id="search-box" (input)="search(searchBox.value)" class="form-control" />
+<div class="search-container">
+  <div class="input-group" style="margin: 10px">
+    <div class="form-outline">
+      <input
+        id="search-focus"
+        type="search"
+        [placeholder]="'Search for heroes'"
+        #searchBox
+        id="search-box"
+        (input)="search(searchBox.value)"
+        class="form-control"
+      />
+    </div>
   </div>
-</div>
 
-<ul class="list-group">
-  <li *ngFor="let hero of heroes$ | async" >
-    <a routerLink="/detail/{{hero.id}}">
-      {{hero.name}}
-    </a>
-  </li>
-</ul>
+  <div class="search-results-container">
+    <ul class="list-group" *ngIf="suggestions.length > 0">
+      <li
+        class="list-group-item"
+        *ngFor="let suggestion of suggestions"
+        routerLink="/heroDetail/{{suggestion.id}}"
+      >
+        {{ suggestion.name }}
+      </li>
+    </ul>
+  </div>
+  

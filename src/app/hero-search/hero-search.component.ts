@@ -17,15 +17,26 @@ import { HeroService  } from '../hero-services/hero.service';
 export class HeroSearchComponent implements OnInit {
   heroes$!: Observable<Hero[]>;
   private searchTerms = new Subject<string>();
-
+  suggestions: Hero[] = []; 
+  allSuggestions: Hero[] = []; 
   constructor(private heroService: HeroService) {}
 
   // Push a search term into the observable stream.
   search(term: string): void {
-    this.searchTerms.next(term);
+    if(term !== ''){
+      this.suggestions = this.allSuggestions.filter((suggestedHero) => 
+      (
+        suggestedHero.name.toLowerCase().includes(term.toLowerCase())
+      ));
+      this.searchTerms.next(term);
+    }
+    else {
+      this.suggestions = []; 
+    }
   }
 
   ngOnInit(): void {
+    this.heroService.getHeroes().subscribe(heroes => this.allSuggestions = heroes); 
     this.heroes$ = this.searchTerms.pipe(
       // wait 300ms after each keystroke before considering the term
       debounceTime(300),

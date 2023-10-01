@@ -1,0 +1,23 @@
+.search-results-container {
+  position: absolute;
+  top: 100%; /* Position it below the input */
+  right: 9;
+  z-index: 1000; /* Ensure it appears above other content */
+  max-height: 200px; /* Set a max height to limit the dropdown's size */
+  overflow-y: auto; /* Enable vertical scrolling if needed */
+  border: 1px solid #ccc; /* Add a border for a box-like appearance */
+  background-color: #fff; /* Background color of the dropdown */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a shadow for depth */
+  width: 15%;
+}
+
+/* Adjust padding and styles for the list items */
+.search-results-container .list-group-item {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+/* Add hover effect for list items */
+.search-results-container .list-group-item:hover {
+  background-color: #f0f0f0;
+}

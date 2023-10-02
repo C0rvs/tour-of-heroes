@@ -23,6 +23,7 @@ export class HeroSearchComponent implements OnInit {
 
   // Push a search term into the observable stream.
   search(term: string): void {
+    this.heroService.getHeroes().subscribe(heroes => this.allSuggestions = heroes); 
     if(term !== ''){
       this.suggestions = this.allSuggestions.filter((suggestedHero) => 
       (
